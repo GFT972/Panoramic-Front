@@ -1,0 +1,51 @@
+[
+    {
+      "display_name": "Accueil",
+      "route": "/admin/dashboard",
+      "icon": "bx bx-home-alt"
+    },
+    {
+      "display_name": "Prise de commande",
+      "route": "/admin/products",
+      "icon": "bx bx-task"
+    },
+    {
+      "display_name": "Cuisines",
+      "route": "/admin/cuisine",
+      "icon": "bx bx-color-fill"
+    },
+    {
+      "display_name": "Bars",
+      "route": "/admin/bar",
+      "icon": "bx bx-beer"
+    },
+    {
+        "display_name": "Inventaire",
+        "route": "/admin/inventaire",
+        "icon": "bx bx-package"
+    },
+    {
+        "display_name": "Réservation",
+        "route": "/admin/reservation",
+        "icon": "bx bx-calendar"
+    },
+    {
+        "display_name": "Statistiques",
+        "route": "/admin/statistiques",
+        "icon": "bx bx-bar-chart-square"
+    },
+    {
+        "display_name": "Paiement",
+        "route": "/admin/paiement",
+        "icon": "bx bx-credit-card"
+    },
+    {
+        "display_name": "Paramètres",
+        "route": "/admin/parametre",
+        "icon": "bx bx-cog"
+    }
+    
+    
+   
+  ]
+  

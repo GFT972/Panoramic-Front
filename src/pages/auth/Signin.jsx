@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MMLOGO from "../../assets/img/mmlogo.png";
+import { BrowserRouter as Router } from 'react-router-dom'
+
 const Signin = () => {
   return (
     <React.Fragment>
@@ -47,9 +49,12 @@ const Signin = () => {
               Mot de passe oublié ?
             </Link>
           </div>
+          <Link to={"/admin/dashboard"} className="link-connect">
           <button type="submit" className="btn-submit">
             Se connecter
           </button>
+          </Link>
+          
         </form>
         <p className="text-center">
           Nouvel utilisateur ?{" "}

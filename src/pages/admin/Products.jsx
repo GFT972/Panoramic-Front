@@ -18,7 +18,7 @@ const dataProduct = [
     categories: "Interrieur",
     image: "couvert.jpg",
     dispo: 0,
-    price: "$149€49",
+    price: "149€49",
     isTableOccupied: "true",
   },
   {
@@ -35,7 +35,7 @@ const dataProduct = [
     categories: "Interrieur",
     image: "couvert.jpg",
     dispo: 1,
-    price: "$149€49",
+    price: "149€49",
     isTableOccupied: "true",
   },
   {
@@ -60,7 +60,7 @@ const dataProduct = [
     categories: "Interrieur",
     image: "couvert.jpg",
     dispo: 1,
-    price: "$149€49",
+    price: "149€49",
     isTableOccupied: "true",
     
   },
@@ -110,7 +110,7 @@ const dataProduct = [
     categories: "Interrieur",
     image: "couvert.jpg",
     dispo: 1,
-    price: "$149€49",
+    price: "149€49",
     isTableOccupied: "true",
     
   },
@@ -252,21 +252,23 @@ const Products = () => {
           </button>
 
           <FormControl fullWidth sx={{ width: "20%", marginLeft: 46 }}>
-          <InputLabel id="demo-simple-select-label">Sélectionner une salle</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="Salle 1"
-            sx={{
-              backgroundColor: theme.palette.primary.main,
-              color: theme.palette.text.primary,
-            }}
-          >
-            <MenuItem value={10}>Salle 1</MenuItem>
-            <MenuItem value={20}>Salle 2</MenuItem>
-            <MenuItem value={30}>Terasse</MenuItem>
-          </Select>
-        </FormControl>
+      <InputLabel id="demo-simple-select-label" style={{ color: "white" }}>
+        Sélectionner une salle
+      </InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        label="Salle 1"
+        sx={{
+          backgroundColor: theme.palette.primary.main,
+          color: "white", // Changer la couleur du texte en blanc
+        }}
+      >
+        <MenuItem value={10}>Interrieur</MenuItem>
+        <MenuItem value={20}>Terasse</MenuItem>
+  
+      </Select>
+    </FormControl>
           
         </nav>
       </div>

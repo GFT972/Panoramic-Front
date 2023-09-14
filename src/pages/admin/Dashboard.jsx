@@ -43,8 +43,8 @@ const Dashboard = () => {
                     <i className="bx bx-package"></i>
                   </div>
                   <div className="card-widget-body">
-                    <h1 className="widget-count">10</h1>
-                    <p className="widget-name">Products</p>
+                    <h1 className="widget-count">3</h1>
+                    <p className="widget-name">Produits en rupture</p>
                   </div>
                 </div>
               </div>
@@ -57,8 +57,8 @@ const Dashboard = () => {
                     <i className="bx bx-file"></i>
                   </div>
                   <div className="card-widget-body">
-                    <h1 className="widget-count">10</h1>
-                    <p className="widget-name">Order Received</p>
+                    <h1 className="widget-count">12</h1>
+                    <p className="widget-name">Commande en cours</p>
                   </div>
                 </div>
               </div>

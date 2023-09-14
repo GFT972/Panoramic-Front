@@ -786,7 +786,7 @@ progress {
   border-radius: 10px;
 }
 .card-widget.widget-user {
-  background: #FFBD59;
+  background: #9d5fd7;
   border: none;
 }
 .widget-user-decore {
@@ -864,7 +864,7 @@ progress {
   font-size: 19px;
   margin: 0;
   font-weight: 500;
-  color: #212529;
+  color: #ffffff;
 }
 .widget-name {
   font-size: 14px;
@@ -1142,7 +1142,7 @@ progress {
 
 .btn-add-card {
   margin-left: 20px;
-  background-color: #9a9a9d;
+  background-color: var(--noir2);
   border-radius: 8px;
   color: #ffffff; /* Couleur du texte (blanc ici pour contraster avec le fond) */
   padding: 5px 20px; /* Ajout de marge interne pour donner de l'espace au texte */

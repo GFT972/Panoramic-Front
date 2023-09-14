@@ -11,29 +11,29 @@ const ForgotPassword = () => {
         </div>
       </div>
       <div className="auth-body">
-        <h1 className="auth-header-title">Forgot Password?</h1>
+        <h1 className="auth-header-title">Mot de passe oublié ?</h1>
         <p className="auth-header-subtitle forgot-subtitle">
-          Enter your email and we'll send you intructions to reset your password
+        Entrez votre email et nous vous enverrons des instructions pour réinitialiser votre mot de passe
         </p>
         <form className="auth-form-validation">
           <div className="input-field">
             <label htmlFor="email" className="input-label">
-              Email address
+              Adresse Email
             </label>
             <input
               type="text"
               className="input-control"
               id="email"
-              placeholder="example@gmail.com"
+              placeholder="exemple@gmail.com"
               autoComplete="off"
               required
             />
           </div>
           <button type="submit" className="btn-submit">
-            Send Link Notification
+            Reinitialiser mon mot de passe
           </button>
           <Link to={"/auth/signin"} className="btn-back-to-login">
-            Back to login
+            Retour
           </Link>
         </form>
       </div>

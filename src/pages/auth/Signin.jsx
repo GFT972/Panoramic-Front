@@ -49,7 +49,7 @@ const Signin = () => {
               Mot de passe oublié ?
             </Link>
           </div>
-          <Link to={"/admin/dashboard"} className="link-connect">
+          <Link to={"/admin/products"} className="link-connect">
           <button type="submit" className="btn-submit">
             Se connecter
           </button>

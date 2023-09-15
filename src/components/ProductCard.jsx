@@ -33,8 +33,9 @@ const ProductCard = ({
     cardClassName += " green-border";
   }
 
-  const dishOptions = ["Burger", "Escalope", "Carbonnade", "Welsh", "Salade"]; // Exemple d'options de plat
-
+  const dishOptions = Array.from({ length: 20 }, (_, index) => `Entrée ${index}`); 
+  const orderCategories = ["Entrée", "Plat", "Dessert", "Boisson"];
+  
   return (
     <div className={cardClassName} onClick={handleOpen} style={{ cursor: "pointer" }}>
       <div className="card-product-header">
@@ -81,48 +82,48 @@ const ProductCard = ({
       </div>
 
       <Modal open={open} onClose={handleClose}>
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            backgroundColor: "#fff",
-            padding: "20px",
-            minWidth: "300px",
-          }}
-        >
-          <Typography variant="h6" gutterBottom>
-            Prise de commande
-          </Typography>
-          {/* Utilisation d'Autocomplete pour les champs de plats */}
-          {Array.from({ length: 4 }, (_, index) => (
-            <Autocomplete
-              key={index}
-              options={dishOptions}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={`Plat ${index + 1}`}
-                  variant="outlined"
-                  fullWidth
-                  margin="normal"
-                />
-              )}
-            />
-          ))}
-          <TextField label="Quantité" variant="outlined" fullWidth margin="normal" type="number" />
-          <Button variant="contained" color="success" onClick={handleClose} style={{ marginTop: '10px' }}>
-            Valider
-          </Button>
-          <Button variant="contained" color="warning" onClick={handleClose} style={{ marginTop: '10px', marginLeft: '10px' }}>
-            En attente
-          </Button>
-          <Button variant="contained" color="error" onClick={handleClose} style={{ marginTop: '10px', marginLeft: '365px' }}>
-            Annuler
-          </Button>
-        </div>
-      </Modal>
+  <div
+    style={{
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      backgroundColor: "#fff",
+      padding: "20px",
+      minWidth: "300px",
+    }}
+  >
+    <Typography variant="h6" gutterBottom>
+      Prise de commande
+    </Typography>
+    {/* Utilisation d'Autocomplete pour les champs de plats */}
+    {orderCategories.map((category, index) => (
+      <Autocomplete
+        key={index}
+        options={dishOptions}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label={category}
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
+        )}
+      />
+    ))}
+    <TextField label="Quantité" variant="outlined" fullWidth margin="normal" type="number" />
+    <Button variant="contained" color="success" onClick={handleClose} style={{ marginTop: '10px' }}>
+      Valider
+    </Button>
+    <Button variant="contained" color="warning" onClick={handleClose} style={{ marginTop: '10px', marginLeft: '10px' }}>
+      En attente
+    </Button>
+    <Button variant="contained" color="error" onClick={handleClose} style={{ marginTop: '10px', marginLeft: '365px' }}>
+      Annuler
+    </Button>
+  </div>
+</Modal>
     </div>
   );
 };

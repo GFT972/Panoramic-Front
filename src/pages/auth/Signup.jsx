@@ -97,13 +97,13 @@ const Signup = () => {
             />
           </div>
           <button type="submit" className="btn-submit">
-            Create account
+            Créer mon compte
           </button>
         </form>
         <p className="text-center">
-          Already have an account?{" "}
+          Vous avez déja un compte ?{" "}
           <Link to={"/auth/signin"} className="link-text-center">
-            Signin instead
+            Se connecter
           </Link>
         </p>
       </div>

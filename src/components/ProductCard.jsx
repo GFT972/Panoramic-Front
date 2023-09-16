@@ -76,7 +76,7 @@ const ProductCard = ({
        .catch((error) => {
          console.error("Erreur lors de la récupération des boissons :", error);
        });
-    // Faites de même pour les Plats, Desserts et Boissons
+
   }, []);
 
   return (

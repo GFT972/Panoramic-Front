@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "./Dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Modal, TextField, Typography, Button } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete"; // Importez Autocomplete
+import Autocomplete from "@mui/material/Autocomplete";
+import axios from "axios"; // Importez Axios
 
 const ProductCard = ({
   brand,
@@ -17,6 +18,10 @@ const ProductCard = ({
   isTableOccupied,
 }) => {
   const [open, setOpen] = useState(false);
+  const [entrees, setEntrees] = useState([]);
+  const [plats, setPlats] = useState([]);
+  const [desserts, setDesserts] = useState([]);
+  const [boissons, setBoissons] = useState([]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -33,9 +38,47 @@ const ProductCard = ({
     cardClassName += " green-border";
   }
 
-  const dishOptions = Array.from({ length: 20 }, (_, index) => `Entrée ${index}`); 
   const orderCategories = ["Entrée", "Plat", "Dessert", "Boisson"];
-  
+
+  useEffect(() => {
+    // Utilisez Axios pour effectuer les requêtes à l'API
+    // Gestion des Entrées
+    axios.get("http://127.0.0.1:8000/api/entree")
+      .then((response) => {
+        setEntrees(response.data);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la récupération des entrées :", error);
+      });
+    
+      // Gestion des Plats
+    axios.get("http://127.0.0.1:8000/api/plat")
+    .then((response) => {
+      setPlats(response.data);
+    })
+    .catch((error) => {
+      console.error("Erreur lors de la récupération des plats :", error);
+    });
+
+       // Gestion des desserts
+       axios.get("http://127.0.0.1:8000/api/dessert")
+       .then((response) => {
+         setDesserts(response.data);
+       })
+       .catch((error) => {
+         console.error("Erreur lors de la récupération des desserts :", error);
+
+       });   // Gestion des boissons
+       axios.get("http://127.0.0.1:8000/api/boisson")
+       .then((response) => {
+         setBoissons(response.data);
+       })
+       .catch((error) => {
+         console.error("Erreur lors de la récupération des boissons :", error);
+       });
+    // Faites de même pour les Plats, Desserts et Boissons
+  }, []);
+
   return (
     <div className={cardClassName} onClick={handleOpen} style={{ cursor: "pointer" }}>
       <div className="card-product-header">
@@ -82,48 +125,57 @@ const ProductCard = ({
       </div>
 
       <Modal open={open} onClose={handleClose}>
-  <div
-    style={{
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      backgroundColor: "#fff",
-      padding: "20px",
-      minWidth: "300px",
-    }}
-  >
-    <Typography variant="h6" gutterBottom>
-      Prise de commande
-    </Typography>
-    {/* Utilisation d'Autocomplete pour les champs de plats */}
-    {orderCategories.map((category, index) => (
-      <Autocomplete
-        key={index}
-        options={dishOptions}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label={category}
-            variant="outlined"
-            fullWidth
-            margin="normal"
-          />
-        )}
-      />
-    ))}
-    <TextField label="Quantité" variant="outlined" fullWidth margin="normal" type="number" />
-    <Button variant="contained" color="success" onClick={handleClose} style={{ marginTop: '10px' }}>
-      Valider
-    </Button>
-    <Button variant="contained" color="warning" onClick={handleClose} style={{ marginTop: '10px', marginLeft: '10px' }}>
-      En attente
-    </Button>
-    <Button variant="contained" color="error" onClick={handleClose} style={{ marginTop: '10px', marginLeft: '365px' }}>
-      Annuler
-    </Button>
-  </div>
-</Modal>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            backgroundColor: "#fff",
+            padding: "20px",
+            minWidth: "300px",
+          }}
+        >
+          <Typography variant="h6" gutterBottom>
+            Prise de commande
+          </Typography>
+          {orderCategories.map((category, index) => (
+            <Autocomplete
+              key={index}
+              options={
+                category === "Entrée"
+                  ? entrees.map((entree) => entree.nomEntree)
+                  : category === "Plat"
+                  ? plats.map((plat) => plat.nomPlat)
+                  : category === "Dessert"
+                  ? desserts.map((dessert) => dessert.nomDessert)
+                  : category === "Boisson"
+                  ? boissons.map((boisson) => boisson.nomBoisson)
+                  : []
+              }
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label={category}
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                />
+              )}
+            />
+          ))}
+          <TextField label="Quantité" variant="outlined" fullWidth margin="normal" type="number" />
+          <Button variant="contained" color="success" onClick={handleClose} style={{ marginTop: '10px' }}>
+            Valider
+          </Button>
+          <Button variant="contained" color="warning" onClick={handleClose} style={{ marginTop: '10px', marginLeft: '10px' }}>
+            En attente
+          </Button>
+          <Button variant="contained" color="error" onClick={handleClose} style={{ marginTop: '10px', marginLeft: '365px' }}>
+            Annuler
+          </Button>
+        </div>
+      </Modal>
     </div>
   );
 };
